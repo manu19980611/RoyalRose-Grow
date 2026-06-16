@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout Page</title>
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  background:pink;
+  margin: 0;
+  padding: 0;
+}
+
+.checkout-page {
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 20px;
+}
+
+.checkout-page h1 {
+  margin-bottom: 20px;
+  font-size: 2rem;
+}
+
+.checkout-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+}
+
+.cart-section,
+.summary-section {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.cart-item {
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.cart-item:last-child {
+  border-bottom: none;
+}
+
+.cart-item img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.cart-title {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.cart-price {
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.cart-qty input {
+  width: 60px;
+  padding: 4px;
+}
+
+.cart-total {
+  font-weight: 700;
+  align-self: center;
+}
+
+.summary-row,
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  margin: 8px 0;
+}
+
+.summary-total {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.checkout-btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  background: #111;
+  color: #fff;
+  cursor: pointer;
+  margin-top: 16px;
+  transition: background 0.3s;
+}
+
+.checkout-btn:hover {
+  background: #333;
+}
+
+@media (max-width: 860px) {
+  .checkout-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+    </style>
+</head>
+<body>
+  <section class="checkout-page">
+    <h1>Checkout</h1>
+
+    <div class="checkout-grid">
+      <!-- Cart Section -->
+      <div class="cart-section">
+        <h2>Your Cart</h2>
+
+        <div class="cart-item">
+          <img src="mouse.jpg" alt="Growth Booster" />
+          <div class="cart-details">
+            <div class="cart-title">Growth Booster</div>
+            <div class="cart-price">₹1499</div>
+            <div class="cart-qty">
+              <label>Qty</label>
+              <input type="number" id="qty1" value="1" min="1" />
+            </div>
+          </div>
+          <div class="cart-total">₹1499</div>
+        </div>
+
+        <div class="cart-item">
+          <img src="keyboard.jpg" alt="DAP" />
+          <div class="cart-details">
+            <div class="cart-title">DAP</div>
+            <div class="cart-price">1999</div>
+            <div class="cart-qty">
+              <label>Qty</label>
+              <input type="number" id="qty2" value="1" min="1" />
+            </div>
+          </div>
+          <div class="cart-total">₹1999</div>
+        </div>
+
+        <div class="cart-item">
+          <img src="cable.jpg" alt="Nativo" />
+          <div class="cart-details">
+            <div class="cart-title">Nativo</div>
+            <div class="cart-price">₹199</div>
+            <div class="cart-qty">
+              <label>Qty</label>
+              <input type="number" id="qty3" value="1" min="1" />
+            </div>
+          </div>
+          <div class="cart-total">
+            <h3><span id="total">₹1499</span> </h3></div>
+        </div>
+      </div>
+
+      <!-- Summary Section -->
+      <div class="summary-section">
+        <h2>Order Summary</h2>
+
+        <div class="summary-row"><span>Subtotal</span><span>₹3697</span></div>
+        <div class="summary-row"><span>Shipping</span><span>₹99</span></div>
+        <div class="summary-row"><span>Tax (5%)</span><span>₹185</span></div>
+        <hr />
+        <div class="summary-total"><span>Total</span><span>₹3981</span></div> 
+
+        <button class="checkout-btn">Proceed to Pay</button>
+      </div>
+    </div>
+  </section>
+  <script>
+    let price= 1499;
+    document.getElementById("qty1").addEventListener("input",function(){
+      let qty=Number(this.value);
+      let total=price*qty;
+      document.getElementById("total").innerText= total;
+    })
+  </script>
+</body>
+</html>

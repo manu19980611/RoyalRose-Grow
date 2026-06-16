@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Page</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-image:url(../Project_images/main_page_background_image.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color:whitesmoke;
+      padding: 12px 20px;
+    }
+    .navbar .logo {
+      color: red;
+      font-size: 20px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .navbar ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+    .navbar ul li {
+      margin: 0 15px;
+    }
+    .navbar ul li a {
+      color: red;
+      text-decoration: none;
+      font-size: 16px;
+      padding: 8px 12px;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+    .navbar ul li a:hover {
+      background-color: #1a5ed8;
+    }
+    /* Home Section */
+    .home {
+      display: flex;
+      justify-content:right;
+      align-items:center;
+      flex-direction: column;
+      padding: 50px 20px;
+      text-align: center;
+    }
+    .home h1 {
+      font-size: 36px;
+      color: #2575fc;
+    }
+    .home p {
+      font-size: 18px;
+      color: white;
+      max-width: 600px;
+      
+
+    }
+    .home img {
+      margin-top: 20px;
+      max-width: 400px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    @media (max-width: 900px) {
+  .contact-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .contact-form, .contact-info {
+    width: 90%;
+  }
+}
+
+@media (max-width: 500px) {
+  .contact-section h1 {
+    font-size: 24px;
+  }
+  .contact-form button {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="#" class="logo">Rose Care: Fertilizing Guide</a>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="About.html">About</a></li>
+      <li><a href="Product.html">Products</a></li>
+      <li><a href="Contact.html">Contact</a></li>
+      <li><a href="Logout.html">Logout</a></li>
+    </ul>
+  </nav>
+
+  <!-- Home Section -->
+  <section class="home" id="home">
+    <h1>The Enchanting World of Roses</h1>
+    <p>
+      The Marebula Rose is a unique and enchanting hybrid rose variety, admired for its rich crimson petals and delicate, 
+      long-lasting fragrance. Known for its elegance and beauty, 
+      it thrives in diverse climates and blooms gracefully throughout the season. Its vibrant appearance makes it a favorite choice for gardens, 
+      floral arrangements, and special occasions. Beyond its ornamental appeal, the Marebula Rose symbolizes love, passion, and timeless beauty. 
+      With minimal care requirements and strong resistance to common pests, it is both captivating and practical for home gardens, 
+      landscaping, or gifting, bringing charm, freshness, and elegance wherever it blossoms.  
+    </p>
+  </section>
+  
+
+
+
+</body>
+</html>

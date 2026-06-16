@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products</title>
+  <style>
+    body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: pink;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: whitesmoke;
+  padding: 12px 20px;
+}
+.navbar .logo {
+  color: red;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+}
+.navbar ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+.navbar ul li {
+  margin: 0 15px;
+}
+.navbar ul li a {
+  color:red;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+.navbar ul li a:hover,
+.navbar ul li a.active {
+  background: blue;
+}
+
+/* Product Grid */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 40px;
+}
+.product-card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+.product-card:hover {
+  transform: translateY(-5px);
+}
+.product-card img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+.product-card h3 {
+  color: #2575fc;
+  margin: 10px 0;
+}
+.price {
+  font-size: 18px;
+  color: #e91e63;
+  font-weight: bold;
+}
+.product-card button {
+  margin: 5px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.product-card button:hover {
+  opacity: 0.8;
+}
+.checkout {
+  background: #4caf50;
+  color: white;
+  font-size: 18px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.checkout:hover {
+  background: #3d8b40;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">Rose Care: Fertilizing Guide</a>
+    <ul>
+      <li><a href="cart.html">Cart 🛒 <span id="cartCount">0</span></a></li>
+    </ul>
+  </nav>
+
+  <!-- Product Grid -->
+  <h1 style="text-align:center; margin-top:20px;">Products For Rose Caring</h1>
+  <div class="products-grid">
+    <!-- Product Item -->
+    <div class="product-card">
+      <img src="https://via.placeholder.com/200x150?text=Headphones" alt="Growth Booster">
+      <h3>Growth Booster</h3>
+      <p class="price">₹1499</p>
+      <button onclick="addToCart('Wireless Headphones',1499)">Add to Cart</button>
+      <button onclick="buyNow()">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="https://via.placeholder.com/200x150?text=Smartwatch" alt="DAP">
+      <h3>DAP</h3>
+      <p class="price">₹1999</p>
+      <button onclick="addToCart('Smart Watch',1999)">Add to Cart</button>
+      <button onclick="buyNow()">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="https://via.placeholder.com/200x150?text=Laptop" alt="NPK">
+      <h3>NPK</h3>
+      <p class="price">₹399</p>
+      <button onclick="addToCart('Laptop',399)">Add to Cart</button>
+      <button onclick="buyNow()">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="https://via.placeholder.com/200x150?text=Mobile" alt="Nativo">
+      <h3>Nativo</h3>
+      <p class="price">₹199</p>
+      <button onclick="addToCart('Smartphone',199)">Add to Cart</button>
+      <button onclick="buyNow()">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="https://via.placeholder.com/200x150?text=Camera" alt="12-16-0">
+      <h3>12-16-0</h3>
+      <p class="price">₹199</p>
+      <button onclick="addToCart('DSLR Camera',199)">Add to Cart</button>
+      <button onclick="buyNow()">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="https://via.placeholder.com/200x150?text=Tablet" alt="13-0-45">
+      <h3>13-0-45</h3>
+      <p class="price">₹99</p>
+      <button onclick="addToCart('Tablet',99)">Add to Cart</button>
+      <button onclick="buyNow()">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="https://via.placeholder.com/200x150?text=Keyboard" alt="19-19-19">
+      <h3>19-19-19</h3>
+      <p class="price">₹499</p>
+      <button onclick="addToCart('Mechanical Keyboard',499)">Add to Cart</button>
+      <button onclick="buyNow()">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="https://via.placeholder.com/200x150?text=Mouse" alt="Go Garden DAP">
+      <h3>Go Garden DAP</h3>
+      <p class="price">₹999</p>
+      <button onclick="addToCart('Go Garden DAP',999)">Add to Cart</button>
+      <button onclick="buyNow()">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="https://via.placeholder.com/200x150?text=Speaker" alt="TATA M45">
+      <h3>Tata M45</h3>
+      <p class="price">₹1999</p>
+      <button onclick="addToCart('Bluetooth Speaker',1999)">Add to Cart</button>
+      <button onclick="buyNow()">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="https://via.placeholder.com/200x150?text=Monitor" alt="Micro nutrients">
+      <h3>Micro nutrients</h3>
+      <p class="price">₹599</p>
+      <button onclick="addToCart('HD Monitor',599)">Add to Cart</button>
+      <button onclick="buyNow()">Buy Now</button>
+    </div>
+  </div>
+
+  <div style="text-align:center; margin:30px;">
+    <button class="checkout" onclick="checkout()">Proceed to Checkout</button>
+  </div>
+
+  <script>
+    let cart = [];
+    let cartCount = 0;
+
+    function addToCart(product, price) {
+      cart.push({product, price});
+      cartCount++;
+      document.getElementById("cartCount").textContent = cartCount;
+      alert(product + " added to cart!");
+      localStorage.setItem("cart", JSON.stringify(cart)); // save cart
+    }
+
+    function buyNow() {
+      alert("Redirecting to checkout...");
+      window.location.href = "checkout.html";
+    }
+
+    function checkout() {
+      if(cart.length === 0){
+        alert("Your cart is empty!");
+      } else {
+        window.location.href = "checkout.html";
+      }
+    }
+  </script>
+
+</body>
+</html>
