@@ -4,111 +4,109 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Checkout Page</title>
+<title>Checkout</title>
 
 <style>
-body {
+body{
     font-family: Arial, sans-serif;
-    background: pink;
-    margin: 0;
-    padding: 0;
+    background:pink;
+    margin:0;
+    padding:20px;
 }
 
-.checkout-page {
-    max-width: 1000px;
-    margin: 30px auto;
-    padding: 20px;
+.checkout-page{
+    max-width:1000px;
+    margin:auto;
 }
 
-.checkout-page h1 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.checkout-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 20px;
+.checkout-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:20px;
 }
 
 .cart-section,
-.summary-section {
-    background: #fff;
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+.summary-section{
+    background:#fff;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
 }
 
-.cart-item {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 16px;
-    padding: 12px 0;
-    border-bottom: 1px solid #eee;
+.cart-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid #ddd;
+    padding:15px 0;
 }
 
-.cart-item:last-child {
-    border-bottom: none;
+.cart-title{
+    font-weight:bold;
+    color:#2575fc;
 }
 
-.cart-title {
-    font-weight: bold;
-    color: #2575fc;
+.cart-price{
+    color:#666;
 }
 
-.cart-price {
-    color: #666;
+.qty-controls{
+    margin-top:10px;
+}
+
+.qty-controls button{
+    padding:5px 10px;
+    cursor:pointer;
+    border:none;
+    border-radius:4px;
+}
+
+.delete-btn{
+    background:red;
+    color:white;
+    margin-left:10px;
 }
 
 .summary-row,
-.summary-total {
-    display: flex;
-    justify-content: space-between;
-    margin: 10px 0;
+.summary-total{
+    display:flex;
+    justify-content:space-between;
+    margin:10px 0;
 }
 
-.summary-total {
-    font-size: 1.2rem;
-    font-weight: bold;
+.summary-total{
+    font-size:20px;
+    font-weight:bold;
 }
 
-.checkout-btn {
-    width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 8px;
-    background: #111;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 15px;
+.checkout-btn{
+    width:100%;
+    padding:12px;
+    background:black;
+    color:white;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    margin-top:15px;
 }
 
-.checkout-btn:hover {
-    background: #333;
+.checkout-btn:hover{
+    background:#333;
 }
 
-.customer-form {
-    margin-top: 20px;
+input,
+textarea{
+    width:100%;
+    padding:10px;
+    margin:8px 0;
+    border:1px solid #ccc;
+    border-radius:5px;
+    box-sizing:border-box;
 }
 
-.customer-form input,
-.customer-form textarea {
-    width: 100%;
-    padding: 10px;
-    margin: 8px 0;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    box-sizing: border-box;
-}
-
-.customer-form textarea {
-    resize: vertical;
-}
-
-@media (max-width: 860px) {
-    .checkout-grid {
-        grid-template-columns: 1fr;
+@media(max-width:768px){
+    .checkout-grid{
+        grid-template-columns:1fr;
     }
 }
 </style>
@@ -118,137 +116,281 @@ body {
 
 <section class="checkout-page">
 
-    <h1>Checkout</h1>
+<h1>Checkout</h1>
 
-    <div class="checkout-grid">
+<div class="checkout-grid">
 
-        <!-- Cart -->
-        <div class="cart-section">
-            <h2>Your Cart</h2>
+    <!-- Cart Section -->
+    <div class="cart-section">
 
-            <div id="cartItems"></div>
+        <h2>Your Cart</h2>
 
-            <div class="customer-form">
-                <h3>Delivery Details</h3>
+        <div id="cartItems"></div>
 
-                <input type="text" id="name" placeholder="Full Name" required>
+        <hr>
 
-                <input type="email" id="email" placeholder="Email Address" required>
+        <h3>Delivery Details</h3>
 
-                <input type="tel" id="phone" placeholder="Phone Number" required>
+        <input
+            type="text"
+            id="name"
+            placeholder="Enter Your Name"
+        >
 
-                <textarea id="address"
-                          rows="4"
-                          placeholder="Delivery Address"
-                          required></textarea>
-            </div>
-        </div>
+        <input
+            type="email"
+            id="email"
+            placeholder="Enter Email"
+        >
 
-        <!-- Summary -->
-        <div class="summary-section">
+        <input
+            type="tel"
+            id="phone"
+            placeholder="Enter Mobile Number"
+        >
 
-            <h2>Order Summary</h2>
-
-            <div class="summary-row">
-                <span>Subtotal</span>
-                <span id="subtotal">₹0</span>
-            </div>
-
-            <div class="summary-row">
-                <span>Shipping</span>
-                <span id="shipping">₹99</span>
-            </div>
-
-            <div class="summary-row">
-                <span>Tax (5%)</span>
-                <span id="tax">₹0</span>
-            </div>
-
-            <hr>
-
-            <div class="summary-total">
-                <span>Total</span>
-                <span id="grandTotal">₹0</span>
-            </div>
-
-            <button class="checkout-btn" onclick="placeOrder()">
-                Proceed to Pay
-            </button>
-
-        </div>
+        <textarea
+            id="address"
+            rows="4"
+            placeholder="Enter Delivery Address"
+        ></textarea>
 
     </div>
+
+    <!-- Summary -->
+    <div class="summary-section">
+
+        <h2>Order Summary</h2>
+
+        <div class="summary-row">
+            <span>Subtotal</span>
+            <span id="subtotal">₹0</span>
+        </div>
+
+        <div class="summary-row">
+            <span>Shipping</span>
+            <span id="shipping">₹99</span>
+        </div>
+
+        <div class="summary-row">
+            <span>Tax (5%)</span>
+            <span id="tax">₹0</span>
+        </div>
+
+        <hr>
+
+        <div class="summary-total">
+            <span>Total</span>
+            <span id="grandTotal">₹0</span>
+        </div>
+
+        <button
+            class="checkout-btn"
+            onclick="placeOrder()"
+        >
+            Proceed To Pay
+        </button>
+
+    </div>
+
+</div>
 
 </section>
 
 <script>
 
-// Get Cart Data
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let cart =
+JSON.parse(localStorage.getItem("cart")) || [];
 
-const cartItems = document.getElementById("cartItems");
+const cartItems =
+document.getElementById("cartItems");
 
-let subtotal = 0;
+renderCart();
 
-if(cart.length === 0){
+function renderCart(){
 
-    cartItems.innerHTML = "<p>Your cart is empty.</p>";
+    cartItems.innerHTML = "";
 
-} else {
-
-    cart.forEach(item => {
-
-        subtotal += item.price;
-
-        cartItems.innerHTML += `
-            <div class="cart-item">
-                <div>
-                    <div class="cart-title">${item.product}</div>
-                    <div class="cart-price">₹${item.price}</div>
-                </div>
-
-                <div><strong>₹${item.price}</strong></div>
-            </div>
-        `;
-    });
-}
-
-const shipping = 99;
-const tax = Math.round(subtotal * 0.05);
-const grandTotal = subtotal + shipping + tax;
-
-document.getElementById("subtotal").innerText = "₹" + subtotal;
-document.getElementById("tax").innerText = "₹" + tax;
-document.getElementById("grandTotal").innerText = "₹" + grandTotal;
-
-// Place Order
-function placeOrder() {
+    let subtotal = 0;
 
     if(cart.length === 0){
-        alert("Your cart is empty!");
+
+        cartItems.innerHTML =
+        "<p>Your cart is empty.</p>";
+
+        document.getElementById("subtotal").innerText = "₹0";
+        document.getElementById("tax").innerText = "₹0";
+        document.getElementById("grandTotal").innerText = "₹0";
+
         return;
     }
 
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const phone = document.getElementById("phone").value;
-    const address = document.getElementById("address").value;
+    cart.forEach((item,index)=>{
 
-    if(!name || !email || !phone || !address){
-        alert("Please fill all delivery details.");
+        if(!item.qty){
+            item.qty = 1;
+        }
+
+        let itemTotal =
+        item.price * item.qty;
+
+        subtotal += itemTotal;
+
+        cartItems.innerHTML += `
+        <div class="cart-item">
+
+            <div>
+
+                <div class="cart-title">
+                    ${item.product}
+                </div>
+
+                <div class="cart-price">
+                    ₹${item.price}
+                </div>
+
+                <div class="qty-controls">
+
+                    <button
+                    onclick="decreaseQty(${index})">
+                    ➖
+                    </button>
+
+                    <span style="margin:0 10px;">
+                    ${item.qty}
+                    </span>
+
+                    <button
+                    onclick="increaseQty(${index})">
+                    ➕
+                    </button>
+
+                    <button
+                    class="delete-btn"
+                    onclick="deleteItem(${index})">
+                    🗑 Delete
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div>
+                ₹${itemTotal}
+            </div>
+
+        </div>
+        `;
+    });
+
+    let shipping = 99;
+
+    let tax =
+    Math.round(subtotal * 0.05);
+
+    let grandTotal =
+    subtotal + shipping + tax;
+
+    document.getElementById("subtotal")
+    .innerText = "₹" + subtotal;
+
+    document.getElementById("tax")
+    .innerText = "₹" + tax;
+
+    document.getElementById("grandTotal")
+    .innerText = "₹" + grandTotal;
+
+    localStorage.setItem(
+        "cart",
+        JSON.stringify(cart)
+    );
+}
+
+function increaseQty(index){
+
+    cart[index].qty++;
+
+    localStorage.setItem(
+        "cart",
+        JSON.stringify(cart)
+    );
+
+    renderCart();
+}
+
+function decreaseQty(index){
+
+    if(cart[index].qty > 1){
+
+        cart[index].qty--;
+
+        localStorage.setItem(
+            "cart",
+            JSON.stringify(cart)
+        );
+
+        renderCart();
+    }
+}
+
+function deleteItem(index){
+
+    if(confirm("Remove this item?")){
+
+        cart.splice(index,1);
+
+        localStorage.setItem(
+            "cart",
+            JSON.stringify(cart)
+        );
+
+        renderCart();
+    }
+}
+
+function placeOrder(){
+
+    if(cart.length === 0){
+
+        alert("Cart is empty!");
+
+        return;
+    }
+
+    let name =
+    document.getElementById("name").value;
+
+    let email =
+    document.getElementById("email").value;
+
+    let phone =
+    document.getElementById("phone").value;
+
+    let address =
+    document.getElementById("address").value;
+
+    if(
+        name === "" ||
+        email === "" ||
+        phone === "" ||
+        address === ""
+    ){
+        alert(
+        "Please fill all delivery details."
+        );
         return;
     }
 
     alert(
         "Order Placed Successfully!\n\n" +
-        "Customer: " + name +
-        "\nTotal Amount: ₹" + grandTotal
+        "Customer: " + name
     );
 
     localStorage.removeItem("cart");
 
     window.location.href = "index.html";
 }
+
 </script>
 
 </body>
